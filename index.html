@@ -52,13 +52,19 @@
             z-index: 1000;
         }
 
-        /* Container do Logo com flexbox para alinhar ícone e texto */
+        /* Estilo do Logo (Ícone + Texto) */
         .brand-logo-container {
             display: flex;
             align-items: center;
-            gap: 12px; /* Espaçamento entre o ícone e o nome */
+            gap: 12px; /* Espaço entre o ícone e o texto */
             color: var(--text-primary);
             transition: transform 0.3s ease;
+        }
+
+        .brand-logo-container img {
+            max-height: 35px; /* Mantém o ícone num tamanho elegante */
+            width: auto;
+            object-fit: contain;
         }
 
         .brand-logo-container:hover {
@@ -192,7 +198,7 @@
 
     <header>
         <a href="#" class="brand-logo-container">
-            <img src="assets/icone1.png" alt="Ícone Brutos Consulting" style="height: 35px; width: auto; object-fit: contain;">
+            <img src="assets/icone1.png" alt="Ícone Brutos Consulting">
             <span class="brand-name-text">Brutos Consulting</span>
         </a>
 
