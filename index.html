@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brutos Consulting | Transformação & Eficiência</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Variáveis de Tema e Cores --- */
+        :root {
+            --bg-black: #050505;     /* Fundo principal absoluto */
+            --bg-surface: #0e0e0e;   /* Fundo de secções secundárias */
+            --border-subtle: rgba(255, 255, 255, 0.1); /* Bordas subtis */
+            --border-glow: rgba(255, 255, 255, 0.4);   /* Brilho ao passar o rato */
+            --text-primary: #ffffff; /* Texto principal */
+            --text-secondary: #888888; /* Texto secundário */
+            --header-height: 80px;
+        }
+
+        /* Reset e Estilos Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-black);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; /* Renderização de fonte mais nítida */
+        }
+
+        /* Aplicação da fonte serifada nos títulos e na marca */
+        h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Animação "Reveal" ao fazer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0; width: 100%; height: var(--header-height);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%;
+            background: rgba(5, 5, 5, 0.85); /* Fundo semi-transparente */
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); /* Efeito de vidro fosco */
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        /* Estilo do Logo (Apenas Texto) */
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .brand-name-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.3rem; /* Tamanho ajustado para dar presença sem o ícone */
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Navegação */
+        .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links a { font-size: 0.85rem; color: var(--text-secondary); transition: color 0.3s ease; letter-spacing: 0.5px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text-primary); }
+
+        .btn-outline {
+            border: 1px solid var(--border-subtle);
+            padding: 0.7rem 1.4rem; border-radius: 4px; transition: all 0.3s ease; display: inline-block; font-size: 0.85rem; font-weight: 600;
+        }
+        .btn-outline:hover {
+            border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-black) !important;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            padding: 80px 5% 0; position: relative;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+        }
+        .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.5rem; max-width: 900px; font-weight: 600; }
+        .hero h1 i { font-style: italic; font-weight: 400; color: #d4d4d4; }
+        .hero p { font-size: 1.15rem; color: #b0b0b0; max-width: 650px; margin-bottom: 3rem; font-weight: 300; }
+
+        /* --- MARQUEE (Faixa Rotativa) --- */
+        .marquee-container {
+            width: 100vw; overflow: hidden; background: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+            padding: 1.5rem 0; display: flex;
+        }
+        .marquee-content { display: flex; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-item { font-size: 0.85rem; letter-spacing: 2px; color: var(--text-secondary); text-transform: uppercase; padding: 0 3vw; font-weight: 600; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- SECÇÃO SOBRE NÓS (Manifesto) --- */
+        .manifesto {
+            padding: 8rem 5%; max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+        }
+        .manifesto-content h2 { font-size: 2.5rem; margin-bottom: 2rem; line-height: 1.2; font-weight: 500; }
+        .manifesto-content p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 300; }
+        .manifesto-content p strong { color: var(--text-primary); font-weight: 500; }
+        
+        .image-wrapper { position: relative; width: 100%; height: 550px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle); }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(90%) brightness(0.7) contrast(1.1); transition: all 0.6s ease; }
+        .image-wrapper:hover img { filter: grayscale(0%) brightness(1) contrast(1); transform: scale(1.02); }
+
+        /* --- SECÇÃO SERVIÇOS --- */
+        .services { padding: 8rem 5%; background-color: var(--bg-surface); border-top: 1px solid var(--border-subtle); }
+        .services-inner { max-width: 1400px; margin: 0 auto; }
+        .services-header { margin-bottom: 5rem; text-align: center; }
+        .services-header h2 { font-size: 3rem; font-weight: 500; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        
+        .card { background: var(--bg-black); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 3rem 2.5rem; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .card:hover { border-color: var(--border-glow); transform: translateY(-7px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.5); }
+        .card-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); margin-bottom: 1.5rem; display: block; font-weight: 600; }
+        .card h3 { font-size: 1.75rem; margin-bottom: 1rem; font-weight: 500; }
+        .card p { color: var(--text-secondary); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.7; font-weight: 300; }
+        .card ul { list-style: none; }
+        .card ul li { font-size: 0.95rem; color: #d1d1d1; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: center; }
+        .card ul li:last-child { border-bottom: none; }
+        .card ul li::before { content: ""; display: inline-block; width: 5px; height: 5px; background: var(--text-primary); border-radius: 50%; margin-right: 15px; }
+
+        /* --- SECÇÃO CONTACTO (Formulário) --- */
+        .contact-section { padding: 8rem 5%; background: var(--bg-black); border-top: 1px solid var(--border-subtle); }
+        .contact-container { max-width: 1100px; margin: 0 auto; }
+        
+        .contact-grid {
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem;
+            background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 4rem;
+        }
+
+        .contact-info h2 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
+        .contact-info p.lead { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; font-weight: 300; }
+
+        .form-group { margin-bottom: 2rem; position: relative; }
+        .form-group label {
+            display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 1.2rem; background: var(--bg-black);
+            border: 1px solid var(--border-subtle); border-radius: 6px; color: var(--text-primary);
+            font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: rgba(255,255,255,0.5); box-shadow: 0 0 20px rgba(255,255,255,0.05);
+        }
+        .form-submit-btn {
+            width: 100%; padding: 1.2rem; background: var(--text-primary); color: var(--bg-black);
+            border: none; border-radius: 6px; font-weight: 700; font-size: 1rem; font-family: 'Inter', sans-serif;
+            cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px;
+        }
+        .form-submit-btn:hover { background: #e0e0e0; transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(255,255,255,0.3); }
+
+        /* FOOTER */
+        footer { padding: 3rem 5%; border-top: 1px solid var(--border-subtle); background: var(--bg-black); text-align: center; }
+        .footer-bottom { color: var(--text-secondary); font-size: 0.85rem; }
+        .footer-bottom a { margin: 0 10px; transition: color 0.3s ease; }
+        .footer-bottom a:hover { color: var(--text-primary); }
+
+        /* Responsividade Mobile */
+        @media (max-width: 968px) {
+            .manifesto { grid-template-columns: 1fr; padding: 6rem 5%; gap: 3rem; }
+            .image-wrapper { height: 400px; order: -1; }
+            .contact-grid { grid-template-columns: 1fr; padding: 2.5rem; gap: 3rem; }
+            .hero h1 { font-size: 3rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .services { padding: 6rem 5%; }
+            .grid-container { grid-template-columns: 1fr; }
+            .brand-name-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-logo-container">
+            <span class="brand-name-text">Brutos Consulting</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#tese">Sobre nós</a>
+            <a href="#servicos">Nossos Serviços</a>
+            <a href="#contacto" class="btn-outline">Fale Connosco</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1 class="reveal">Precisão cirúrgica na <i>operação.</i><br>Crescimento exponencial no <i>resultado.</i></h1>
+        <p class="reveal" style="transition-delay: 0.2s;">Consultoria estratégica focada na inovação, eficiência de processos e transformação corporativa de alto impacto.</p>
+        <div class="reveal" style="transition-delay: 0.4s;">
+            <a href="#contacto" class="btn-outline" style="border-color: #fff; background: #fff; color: #000; padding: 1rem 2rem; font-size: 1rem;">Iniciar Projeto</a>
+        </div>
+    </section>
+
+    <div class="marquee-container reveal">
+        <div class="marquee-content">
+            <span class="marquee-item">Eficiência Operacional •</span>
+            <span class="marquee-item">Gestão Financeira •</span>
+            <span class="marquee-item">Estratégia Corporativa •</span>
+            <span class="marquee-item">Supply Chain •</span>
+            <span class="marquee-item">Inovação •</span>
+            <span class="marquee-item">Gestão de Projetos •</span>
+            <span class="marquee-item">Eficiência Operacional •</span>
+            <span class="marquee-item">Gestão Financeira •</span>
+            <span class="marquee-item">Estratégia Corporativa •</span>
+            <span class="marquee-item">Supply Chain •</span>
+            <span class="marquee-item">Inovação •</span>
+            <span class="marquee-item">Gestão de Projetos •</span>
+        </div>
+    </div>
+
+    <section id="tese" class="manifesto">
+        <div class="manifesto-content reveal">
+            <h2>Acreditamos que o verdadeiro valor é criado na operação real dos negócios.</h2>
+            <p>A Brutos Consulting nasceu com uma missão clara: transformar o <strong>desordenado</strong> num sistema altamente <strong>ordenado e inovador</strong>. Não somos apenas teóricos; somos parceiros de execução.</p>
+            <p>O nosso foco é deliberado e implacável. Atuamos com base em dados rigorosos para otimizar processos, reduzir ineficiências e preparar a sua empresa para o crescimento sustentável de longo prazo.</p>
+            <p>Garantimos controlo absoluto de toda a cadeia de projetos. <strong>Mais do que aconselhar, nós executamos.</strong></p>
+        </div>
+        <div class="image-wrapper reveal" style="transition-delay: 0.3s;">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Consultoria e Investimento Corporate">
+        </div>
+    </section>
+
+    <section id="servicos" class="services">
+        <div class="services-inner">
+            <div class="services-header reveal">
+                <h2>Serviços</h2>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card reveal">
+                    <span class="card-tag">01 / Business Consulting</span>
+                    <h3>Performance Corporativa</h3>
+                    <p>Melhoria de performance, aumento de eficiência e crescimento sustentável através de planeamento rigoroso.</p>
+                    <ul>
+                        <li>Planeamento Estratégico</li>
+                        <li>Gestão Financeira Estratégica</li>
+                        <li>Gestão Organizacional</li>
+                        <li>Transformação Digital</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal" style="transition-delay: 0.1s;">
+                    <span class="card-tag">02 / Operational Solutions</span>
+                    <h3>Eficiência Implacável</h3>
+                    <p>Foco cirúrgico na redução de custos, mitigação de desperdícios e otimização da cadeia de valor.</p>
+                    <ul>
+                        <li>Gestão de Processos (BPM)</li>
+                        <li>Supply Chain Optimization</li>
+                        <li>Metodologias de Melhoria Contínua</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal" style="transition-delay: 0.2s;">
+                    <span class="card-tag">03 / Strategy</span>
+                    <h3>Posicionamento</h3>
+                    <p>Definição de teses de crescimento e criação de vantagem competitiva duradoura no mercado.</p>
+                    <ul>
+                        <li>Estratégia Corporativa e de M&A</li>
+                        <li>Estudos de Mercado e Competitividade</li>
+                        <li>Estratégia de Inovação</li>
+                    </ul>
+                </div>
+
+                <div class="card reveal" style="transition-delay: 0.3s;">
+                    <span class="card-tag">04 / Project Management</span>
+                    <h3>Execução End-to-End</h3>
+                    <p>Transformamos a estratégia do conselho de administração em realidade operacional mensurável.</p>
+                    <ul>
+                        <li>Gestão Completa de Projetos (PMO)</li>
+                        <li>Metodologias Ágeis e Híbridas</li>
+                        <li>Controlo Rigoroso de Custos e Prazos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-grid reveal">
+                <div class="contact-info">
+                    <h2>Pronto para escalar a sua operação?</h2>
+                    <p class="lead">Deixe-nos os detalhes do seu desafio. Um sócio da Brutos Consulting analisará o seu caso e entrará em contacto para agendar uma reunião estratégica.</p>
+                    <div style="margin-top: 3rem;">
+                        <p style="color: var(--text-primary); font-weight: 600; letter-spacing: 1px; margin-bottom: 0.5rem;">ESCRITÓRIO CENTRAL</p>
+                        <p style="color: var(--text-secondary);">Luanda, Angola</p>
+                    </div>
+                </div>
+                
+                <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Ex: Carlos Silva">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail Corporativo *</label>
+                        <input type="email" id="email" name="_replyto" required placeholder="Ex: carlos@suaempresa.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="empresa">Empresa / Cargo</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Ex: Brutos Consulting / CEO">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Qual o seu maior desafio operacional hoje? *</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Descreva brevemente o contexto..."></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="Novo contacto via Website Brutos Consulting">
+
+                    <button type="submit" class="form-submit-btn">Enviar Pedido de Análise</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom reveal">
+            <p>&copy; 2026 Brutos Consulting. Todos os direitos reservados. <br> <span style="opacity: 0.6; font-size: 0.8rem;">Website com estética Private Equity & Investment Banking.</span></p>
+            <div style="margin-top: 1.5rem;">
+                <a href="#">LinkedIn</a>
+                <a href="mailto:contato@brutosconsulting.com">Email Direto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 120; 
+
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); 
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
