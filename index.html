@@ -8,18 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Variáveis de Tema e Cores --- */
         :root {
-            --bg-black: #050505;     /* Fundo principal absoluto */
-            --bg-surface: #0e0e0e;   /* Fundo de secções secundárias */
-            --border-subtle: rgba(255, 255, 255, 0.1); /* Bordas subtis */
-            --border-glow: rgba(255, 255, 255, 0.4);   /* Brilho ao passar o rato */
-            --text-primary: #ffffff; /* Texto principal */
-            --text-secondary: #888888; /* Texto secundário */
+            --bg-black: #050505;
+            --bg-surface: #0e0e0e;
+            --border-subtle: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(255, 255, 255, 0.4);
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
             --header-height: 80px;
         }
 
-        /* Reset e Estilos Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         
@@ -29,14 +27,12 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased; /* Renderização de fonte mais nítida */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Aplicação da fonte serifada nos títulos e na marca */
         h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
         a { text-decoration: none; color: inherit; }
 
-        /* Animação "Reveal" ao fazer scroll */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -44,22 +40,23 @@
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- HEADER --- */
+        /* HEADER */
         header {
             position: fixed;
             top: 0; width: 100%; height: var(--header-height);
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%;
-            background: rgba(5, 5, 5, 0.85); /* Fundo semi-transparente */
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); /* Efeito de vidro fosco */
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
             z-index: 1000;
         }
 
-        /* Estilo do Logo (Apenas Texto) */
+        /* Container do Logo com flexbox para alinhar ícone e texto */
         .brand-logo-container {
             display: flex;
             align-items: center;
+            gap: 12px; /* Espaçamento entre o ícone e o nome */
             color: var(--text-primary);
             transition: transform 0.3s ease;
         }
@@ -71,7 +68,7 @@
         .brand-name-text {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.3rem; /* Tamanho ajustado para dar presença sem o ícone */
+            font-size: 1.3rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
@@ -89,7 +86,7 @@
             border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-black) !important;
         }
 
-        /* --- HERO SECTION --- */
+        /* HERO SECTION */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             padding: 80px 5% 0; position: relative;
@@ -100,7 +97,7 @@
         .hero h1 i { font-style: italic; font-weight: 400; color: #d4d4d4; }
         .hero p { font-size: 1.15rem; color: #b0b0b0; max-width: 650px; margin-bottom: 3rem; font-weight: 300; }
 
-        /* --- MARQUEE (Faixa Rotativa) --- */
+        /* MARQUEE */
         .marquee-container {
             width: 100vw; overflow: hidden; background: var(--bg-surface);
             border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
@@ -110,7 +107,7 @@
         .marquee-item { font-size: 0.85rem; letter-spacing: 2px; color: var(--text-secondary); text-transform: uppercase; padding: 0 3vw; font-weight: 600; }
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* --- SECÇÃO SOBRE NÓS (Manifesto) --- */
+        /* SOBRE NÓS */
         .manifesto {
             padding: 8rem 5%; max-width: 1400px; margin: 0 auto;
             display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
@@ -123,7 +120,7 @@
         .image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(90%) brightness(0.7) contrast(1.1); transition: all 0.6s ease; }
         .image-wrapper:hover img { filter: grayscale(0%) brightness(1) contrast(1); transform: scale(1.02); }
 
-        /* --- SECÇÃO SERVIÇOS --- */
+        /* SERVIÇOS */
         .services { padding: 8rem 5%; background-color: var(--bg-surface); border-top: 1px solid var(--border-subtle); }
         .services-inner { max-width: 1400px; margin: 0 auto; }
         .services-header { margin-bottom: 5rem; text-align: center; }
@@ -140,7 +137,7 @@
         .card ul li:last-child { border-bottom: none; }
         .card ul li::before { content: ""; display: inline-block; width: 5px; height: 5px; background: var(--text-primary); border-radius: 50%; margin-right: 15px; }
 
-        /* --- SECÇÃO CONTACTO (Formulário) --- */
+        /* CONTACTO */
         .contact-section { padding: 8rem 5%; background: var(--bg-black); border-top: 1px solid var(--border-subtle); }
         .contact-container { max-width: 1100px; margin: 0 auto; }
         
@@ -177,7 +174,6 @@
         .footer-bottom a { margin: 0 10px; transition: color 0.3s ease; }
         .footer-bottom a:hover { color: var(--text-primary); }
 
-        /* Responsividade Mobile */
         @media (max-width: 968px) {
             .manifesto { grid-template-columns: 1fr; padding: 6rem 5%; gap: 3rem; }
             .image-wrapper { height: 400px; order: -1; }
@@ -196,6 +192,7 @@
 
     <header>
         <a href="#" class="brand-logo-container">
+            <img src="assets/icone1.png" alt="Ícone Brutos Consulting" style="height: 35px; width: auto; object-fit: contain;">
             <span class="brand-name-text">Brutos Consulting</span>
         </a>
 
@@ -246,7 +243,7 @@
     <section id="servicos" class="services">
         <div class="services-inner">
             <div class="services-header reveal">
-                <h2>Serviços</h2>
+                <h2>Plataforma de Soluções</h2>
             </div>
             
             <div class="grid-container">
