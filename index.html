@@ -16,6 +16,7 @@
             --text-primary: #ffffff;
             --text-secondary: #888888;
             --header-height: 80px;
+            --whatsapp-color: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -52,52 +53,27 @@
             z-index: 1000;
         }
 
-        /* Estilo do Logo (Ícone + Texto) */
         .brand-logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px; /* Espaço entre o ícone e o texto */
-            color: var(--text-primary);
-            transition: transform 0.3s ease;
+            display: flex; align-items: center; gap: 12px; color: var(--text-primary); transition: transform 0.3s ease;
         }
+        .brand-logo-container img { max-height: 35px; width: auto; object-fit: contain; }
+        .brand-logo-container:hover { transform: scale(1.02); }
+        .brand-name-text { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; letter-spacing: 1.5px; text-transform: uppercase; }
 
-        .brand-logo-container img {
-            max-height: 35px; /* Mantém o ícone num tamanho elegante */
-            width: auto;
-            object-fit: contain;
-        }
-
-        .brand-logo-container:hover {
-            transform: scale(1.02);
-        }
-        
-        .brand-name-text {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        /* Navegação */
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
         .nav-links a { font-size: 0.85rem; color: var(--text-secondary); transition: color 0.3s ease; letter-spacing: 0.5px; font-weight: 500; }
         .nav-links a:hover { color: var(--text-primary); }
 
         .btn-outline {
-            border: 1px solid var(--border-subtle);
-            padding: 0.7rem 1.4rem; border-radius: 4px; transition: all 0.3s ease; display: inline-block; font-size: 0.85rem; font-weight: 600;
+            border: 1px solid var(--border-subtle); padding: 0.7rem 1.4rem; border-radius: 4px; transition: all 0.3s ease; display: inline-block; font-size: 0.85rem; font-weight: 600;
         }
-        .btn-outline:hover {
-            border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-black) !important;
-        }
+        .btn-outline:hover { border-color: var(--text-primary); background: var(--text-primary); color: var(--bg-black) !important; }
 
         /* HERO SECTION */
         .hero {
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             padding: 80px 5% 0; position: relative;
-            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), 
-                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+            background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
         }
         .hero h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -1px; margin-bottom: 1.5rem; max-width: 900px; font-weight: 600; }
         .hero h1 i { font-style: italic; font-weight: 400; color: #d4d4d4; }
@@ -156,29 +132,42 @@
         .contact-info p.lead { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; font-weight: 300; }
 
         .form-group { margin-bottom: 2rem; position: relative; }
-        .form-group label {
-            display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600;
-        }
+        .form-group label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 1.2rem; background: var(--bg-black);
-            border: 1px solid var(--border-subtle); border-radius: 6px; color: var(--text-primary);
-            font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s ease;
+            width: 100%; padding: 1.2rem; background: var(--bg-black); border: 1px solid var(--border-subtle); border-radius: 6px; color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 1rem; transition: all 0.3s ease;
         }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none; border-color: rgba(255,255,255,0.5); box-shadow: 0 0 20px rgba(255,255,255,0.05);
-        }
-        .form-submit-btn {
-            width: 100%; padding: 1.2rem; background: var(--text-primary); color: var(--bg-black);
-            border: none; border-radius: 6px; font-weight: 700; font-size: 1rem; font-family: 'Inter', sans-serif;
-            cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px;
-        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: rgba(255,255,255,0.5); box-shadow: 0 0 20px rgba(255,255,255,0.05); }
+        .form-submit-btn { width: 100%; padding: 1.2rem; background: var(--text-primary); color: var(--bg-black); border: none; border-radius: 6px; font-weight: 700; font-size: 1rem; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; letter-spacing: 1px; }
         .form-submit-btn:hover { background: #e0e0e0; transform: translateY(-3px); box-shadow: 0 10px 20px -10px rgba(255,255,255,0.3); }
 
-        /* FOOTER */
-        footer { padding: 3rem 5%; border-top: 1px solid var(--border-subtle); background: var(--bg-black); text-align: center; }
-        .footer-bottom { color: var(--text-secondary); font-size: 0.85rem; }
-        .footer-bottom a { margin: 0 10px; transition: color 0.3s ease; }
-        .footer-bottom a:hover { color: var(--text-primary); }
+        /* FOOTER & REDES SOCIAIS */
+        footer { padding: 4rem 5% 2rem; border-top: 1px solid var(--border-subtle); background: var(--bg-black); text-align: center; }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+        
+        .social-icons { display: flex; gap: 1.5rem; }
+        .social-icons a {
+            display: flex; align-items: center; justify-content: center; width: 45px; height: 45px;
+            border-radius: 50%; border: 1px solid var(--border-subtle); background: var(--bg-surface);
+            color: var(--text-secondary); transition: all 0.3s ease;
+        }
+        .social-icons a:hover { color: var(--text-primary); border-color: var(--border-glow); transform: translateY(-3px); }
+        .social-icons svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .footer-bottom { color: var(--text-secondary); font-size: 0.85rem; margin-top: 2rem; width: 100%; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* BOTÃO FLUTUANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background-color: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 50px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); z-index: 1000; transition: all 0.3s ease;
+            color: var(--text-primary);
+        }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: currentColor; transition: fill 0.3s ease; }
+        .whatsapp-float:hover {
+            transform: translateY(-5px); border-color: var(--whatsapp-color); box-shadow: 0 10px 25px rgba(37, 211, 102, 0.2);
+        }
+        .whatsapp-float:hover svg { fill: var(--whatsapp-color); }
 
         @media (max-width: 968px) {
             .manifesto { grid-template-columns: 1fr; padding: 6rem 5%; gap: 3rem; }
@@ -191,6 +180,8 @@
             .services { padding: 6rem 5%; }
             .grid-container { grid-template-columns: 1fr; }
             .brand-name-text { font-size: 1.1rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
         }
     </style>
 </head>
@@ -198,7 +189,7 @@
 
     <header>
         <a href="#" class="brand-logo-container">
-            <img src="assets/icone1.png" alt="Ícone Brutos Consulting">
+            <img src="assets/icone1.png" alt="Ícone Brutos Consulting" style="height: 35px; width: auto; object-fit: contain;">
             <span class="brand-name-text">Brutos Consulting</span>
         </a>
 
@@ -339,14 +330,36 @@
     </section>
 
     <footer>
-        <div class="footer-bottom reveal">
-            <p>&copy; 2026 Brutos Consulting. Todos os direitos reservados. <br> <span style="opacity: 0.6; font-size: 0.8rem;">Website com estética Private Equity & Investment Banking.</span></p>
-            <div style="margin-top: 1.5rem;">
-                <a href="#">LinkedIn</a>
-                <a href="mailto:contato@brutosconsulting.com">Email Direto</a>
+        <div class="footer-content reveal">
+            <div class="social-icons">
+                <a href="https://instagram.com/brutosconsulting" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/company/brutosconsulting" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/244900000000" target="_blank" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12.031 0c-6.627 0-12.031 5.405-12.031 12.034 0 2.122.553 4.198 1.603 6.023l-1.603 5.943 6.082-1.596c1.786.953 3.805 1.455 5.867 1.455h.004c6.626 0 12.03-5.405 12.03-12.034 0-3.213-1.251-6.234-3.522-8.506-2.271-2.272-5.293-3.523-8.43-3.519zm6.463 17.265c-.265.748-1.531 1.455-2.112 1.545-.53.081-1.22.215-3.415-.694-2.651-1.096-4.34-3.808-4.471-3.982-.132-.174-1.066-1.421-1.066-2.712 0-1.291.671-1.927.91-2.193.238-.265.521-.331.694-.331.174 0 .348 0 .497.008.158.008.371-.059.58.441.221.528.705 1.724.769 1.856.066.132.108.287.025.452-.083.165-.124.265-.248.413-.124.149-.262.316-.374.432-.124.124-.256.26-.116.502.141.242.628 1.036 1.348 1.681.927.831 1.708 1.094 1.954 1.21.246.116.391.099.539-.074.149-.174.639-.748.812-1.004.174-.256.348-.215.572-.132.223.083 1.411.666 1.652.786.241.121.401.182.46.284.058.102.058.591-.207 1.339z"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Brutos Consulting. Todos os direitos reservados. <br> <span style="opacity: 0.6; font-size: 0.8rem;">Website com estética Private Equity & Investment Banking.</span></p>
             </div>
         </div>
     </footer>
+
+    <a href="https://wa.me/244900000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale connosco no WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M12.031 0c-6.627 0-12.031 5.405-12.031 12.034 0 2.122.553 4.198 1.603 6.023l-1.603 5.943 6.082-1.596c1.786.953 3.805 1.455 5.867 1.455h.004c6.626 0 12.03-5.405 12.03-12.034 0-3.213-1.251-6.234-3.522-8.506-2.271-2.272-5.293-3.523-8.43-3.519zm6.463 17.265c-.265.748-1.531 1.455-2.112 1.545-.53.081-1.22.215-3.415-.694-2.651-1.096-4.34-3.808-4.471-3.982-.132-.174-1.066-1.421-1.066-2.712 0-1.291.671-1.927.91-2.193.238-.265.521-.331.694-.331.174 0 .348 0 .497.008.158.008.371-.059.58.441.221.528.705 1.724.769 1.856.066.132.108.287.025.452-.083.165-.124.265-.248.413-.124.149-.262.316-.374.432-.124.124-.256.26-.116.502.141.242.628 1.036 1.348 1.681.927.831 1.708 1.094 1.954 1.21.246.116.391.099.539-.074.149-.174.639-.748.812-1.004.174-.256.348-.215.572-.132.223.083 1.411.666 1.652.786.241.121.401.182.46.284.058.102.058.591-.207 1.339z"/>
+        </svg>
+    </a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
